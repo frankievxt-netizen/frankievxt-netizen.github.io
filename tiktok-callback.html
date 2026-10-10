@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connecting TikTok | Quiet Psychology Studio</title>
+<style>body{margin:0;font:17px/1.6 system-ui,sans-serif;background:#15131A;color:#F3EDE2;display:grid;place-items:center;min-height:100vh;padding:16px;text-align:center}a{color:#F2B84B}</style>
+</head><body>
+<main>
+  <h1>Connecting TikTok…</h1>
+  <p id="msg">Passing the sign-in back to Quiet Psychology Studio on this computer.</p>
+</main>
+<script>
+// TikTok only redirects to registered https pages. This page hands the one-time code
+// to the Studio app running locally on the same computer; nothing is stored here.
+(function () {
+  var q = window.location.search;
+  if (!q) { document.getElementById("msg").textContent = "No sign-in data received."; return; }
+  window.location.replace("http://127.0.0.1:8090/api/tiktok/callback" + q);
+})();
+</script>
+</body></html>

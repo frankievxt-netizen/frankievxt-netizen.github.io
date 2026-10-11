@@ -14,7 +14,10 @@
 (function () {
   var q = window.location.search;
   if (!q) { document.getElementById("msg").textContent = "No sign-in data received."; return; }
-  window.location.replace("http://127.0.0.1:8090/api/tiktok/callback" + q);
+  var state = new URLSearchParams(q).get("state") || "";
+  var m = /^(\d{4,5})\./.exec(state);
+  var port = m ? m[1] : "8090";
+  window.location.replace("http://127.0.0.1:" + port + "/api/tiktok/callback" + q);
 })();
 </script>
 </body></html>
